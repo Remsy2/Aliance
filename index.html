@@ -3,110 +3,135 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="./css/style.css" />
     <title>Aliance Production</title>
   </head>
+
   <body>
-    <header>
-      <div class="header header-image">
-        <nav class="navbar">
-          <a href="./" class="header-logo">
-            <img
-              class="logo-light"
-              src="img/logo-light.svg"
-              alt="Aliance Production"
-            />
-          </a>
+    <nav class="navbar">
+      <a href="./" class="header-logo">
+        <img src="img/logo-light.svg" alt="Aliance Production" />
+      </a>
 
-          <ul class="header-nav">
-            <li class="header-nav-item">
-              <a href="#" class="header-nav-link">О компании</a>
-              <!-- /.header-nav-link -->
-            </li>
-            <!-- /.header-nav-item -->
-            <li class="header-nav-item">
-              <a href="#" class="header-nav-link">Контрактное производство</a>
-              <!-- /.header-nav-link -->
-            </li>
-            <!-- /.header-nav-item -->
-            <li class="header-nav-item">
-              <a href="#" class="header-nav-link">Собственные торговые марки</a>
-              <!-- /.header-nav-link -->
-            </li>
-            <!-- /.header-nav-item -->
-            <li class="header-nav-item">
-              <a href="#" class="header-nav-link">Новости</a>
-              <!-- /.header-nav-link -->
-            </li>
-            <!-- /.header-nav-item -->
-            <li class="header-nav-item">
-              <a href="#" class="header-nav-link">Контакты</a>
-              <!-- /.header-nav-link -->
-            </li>
-            <!-- /.header-nav-item -->
-          </ul>
+      <ul class="header-nav">
+        <li><a href="#" class="header-nav-link">О компании</a></li>
+        <li>
+          <a href="#" class="header-nav-link">Контрактное производство</a>
+        </li>
+        <li>
+          <a href="#" class="header-nav-link">Собственные торговые марки</a>
+        </li>
+        <li><a href="#" class="header-nav-link">Новости</a></li>
+        <li><a href="#" class="header-nav-link">Контакты</a></li>
+      </ul>
 
-          <div class="header-phone">
-            <img src="img/phone.svg" alt="icon-phone" />
-            <a href="tel:+74996861014" class="header-phone-link"
-              >+7 (499) 686-10-14</a
-            >
-            <!-- /.header-phone-link -->
-          </div>
-          <!-- /.header-phone -->
-          <button class="navbar-button button">Получить консультацию</button>
+      <div class="header-phone">
+        <img src="img/phone.svg" alt="phone" />
+        <a href="tel:+74996861014" class="header-phone-link">
+          +7 (499) 686-10-14
+        </a>
+      </div>
 
-          <!-- /.header-nav -->
-        </nav>
-        <!-- /.navbar -->
+      <button class="navbar-button button">Получить консультацию</button>
+    </nav>
 
-        <div class="container">
-          <div class="header-content">
-            <div class="seporater"></div>
-            <h1 class="header-title">
-              Комплексное обеспечение товарами и расходными материалами бизнеса
-            </h1>
-            <p class="header-text">
-              Высокий уровень вовлечения представителей целевой аудитории
-              является четким доказательством простого факта: высококачественный
-              прототип будущего проекта напрямую зависит от анализа существующих
-              паттернов поведения.
-            </p>
-            <div class="button">Подробнее о компании</div>
-          </div>
-          <!-- /.header-content -->
-          <ul class="header-features">
-            <li class="header-features-item">
-              <img src="img/features/time.svg" alt="" class="header-features-image-icon">
-              <p class="header-features-text">Непрерывная работа c 2017 года</p>
-            </li>
-            <li class="header-features-item">
-              <img src="img/features/certificate.svg" alt="" class="header-features-image-icon">
-              <p class="header-features-text">Вся продукция сертифицирована</p>
-            </li>
-            <li class="header-features-item">
-              <img src="img/features/control.svg" alt="" class="header-features-image-icon">
-              <p class="header-features-text">Контроль качества на всех этапах</p>
-            </li>
-            <li class="header-features-item">
-              <img src="img/features/delivery.svg" alt="" class="header-features-image-icon">
-              <p class="header-features-text">Возможны поставки по всей России</p>
-            </li>
-            <li class="header-features-item">
-              <img src="img/features/speed.svg" alt="" class="header-features-image-icon">
-              <p class="header-features-text">Оперативное производство</p>
-            </li>
-          </div>
+    <header class="header header-image">
+      <div class="container">
+        <div class="header-content">
+          <div class="separator"></div>
+
+          <h1 class="header-title">
+            Комплексное обеспечение товарами и&nbsp;расходными материалами
+            бизнеса
+          </h1>
+
+          <p class="header-text">
+            Высокий уровень вовлечения представителей целевой аудитории является
+            четким доказательством простого факта.
+          </p>
+
+          <button class="button">Подробнее о компании</button>
+        </div>
+
+        <ul class="header-features">
+          <li class="header-features-item">
+            <img src="img/features/time.svg" alt="" />
+            <p class="header-features-text">Работаем с 2017 года</p>
+          </li>
+
+          <li class="header-features-item">
+            <img src="img/features/certificate.svg" alt="" />
+            <p class="header-features-text">Вся продукция сертифицирована</p>
+          </li>
+
+          <li class="header-features-item">
+            <img src="img/features/control.svg" alt="" />
+            <p class="header-features-text">Контроль качества</p>
+          </li>
+
+          <li class="header-features-item">
+            <img src="img/features/delivery.svg" alt="" />
+            <p class="header-features-text">Доставка по России</p>
+          </li>
+
+          <li class="header-features-item">
+            <img src="img/features/speed.svg" alt="" />
+            <p class="header-features-text">Оперативное производство</p>
+          </li>
         </ul>
-        <!-- /.container -->
       </div>
     </header>
-    <script src="js/main.js"></script>
+
+    <section class="section section-light">
+      <div class="container">
+        <div class="separator"></div>
+        <h2 class="section-title">схема работы</h2>
+        <ol class="steps">
+          <li class="steps-item">
+            <span class="steps-num">01</span>
+            <h3 class="steps-title">Знакомство</h3>
+            <p class="steps">
+              Безусловно, сплочённость команды профессионалов позволяет оценить
+              значение форм воздействия.
+            </p>
+            <text></text>
+          </li>
+          <li class="steps-item">
+            <span class="steps-num">02</span>
+            <h3 class="steps-title">Заключение договора</h3>
+            <p class="steps">Лишь интерактивные прототипы призваны к ответу.</p>
+            <text></text>
+          </li>
+          <li class="steps-item">
+            <span class="steps-num">03</span>
+            <h3 class="steps-title">Производство</h3>
+            <p class="steps">
+              А также стремящиеся вытеснить традиционное производство,
+              нанотехнологии функционально разнесены на независимые элементы.
+            </p>
+            <text></text>
+          </li>
+          <li class="steps-item">
+            <span class="steps-num">04</span>
+            <h3 class="steps-title">Доставка</h3>
+            <p class="steps">
+              В частности, экономическая повестка сегодняшнего дня говорит о
+              возможностях приоритизации разума над эмоциями.
+            </p>
+            <text></text>
+          </li>
+        </ol>
+      </div>
+      <!-- /.container -->
+    </section>
   </body>
 </html>
