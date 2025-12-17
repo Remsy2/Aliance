@@ -26,7 +26,7 @@ body {
 }
 
 .header-image {
-  background: url("../img/header-bg.svg") center / cover no-repeat;
+  background: url("../img/header-bg.webp") center / cover no-repeat;
   position: relative;
 }
 
@@ -50,12 +50,13 @@ body {
   padding: 0;
   z-index: 2;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, height 0.2s;
 }
 
 .navbar-light {
-  background: #fff;
+  background-color: #fff;
   color: #292d33;
+  height: 74px;
 }
 
 .navbar-light .header-logo-path {
@@ -73,8 +74,11 @@ body {
 }
 
 .header-logo {
-  padding: 25px 50px;
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+  border-right: 1px solid rgba(235, 235, 240, 0.2);
+  height: 100%;
 }
 
 .header-nav {
