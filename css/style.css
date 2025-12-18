@@ -5,10 +5,8 @@
 }
 
 @font-face {
-  font-family: "Bebas Neue Pro";
-  src: local("Bebas Neue Pro Book"), local("Bebas-Neue-Pro-Book"),
-    url("../fonts/BebasNeuePro-Book.woff2") format("woff2"),
-    url("../fonts/BebasNeuePro-Book.woff") format("woff");
+  font-family: "Bebas Neue Regular";
+  src: url("../fonts/BebasNeueRegular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -26,7 +24,9 @@ body {
 }
 
 .header-image {
-  background: url("../img/header-bg.webp") center / cover no-repeat;
+  background: url("../img/header-bg.jpg");
+  background-size: cover;
+  background-position: center bottom -90px;
   position: relative;
 }
 
@@ -34,7 +34,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(41, 45, 51, 0.6);
+  background: rgba(41, 45, 51, 0.75);
   z-index: 0;
 }
 
@@ -114,10 +114,20 @@ body {
 .button {
   background: #3a71d1;
   color: #fff;
-  padding: 18px 40px;
+  padding: 25px 62px;
   border: none;
   font-size: 16px;
   cursor: pointer;
+}
+
+.navbar-button {
+  flex-shrink: 0;
+  height: 100%;
+  padding: 25px 62px;
+}
+
+.header-button {
+  height: 100%;
 }
 
 .header-content {
@@ -127,19 +137,15 @@ body {
   color: #fff;
 }
 
-.separator {
-  width: 150px;
-  height: 2px;
-  background: #5c8ee6;
-  margin-bottom: 30px;
-}
-
 .header-title {
   max-width: 1080px;
-  font-family: "Bebas Neue Pro";
+  font-family: "Bebas Neue Regular";
   font-size: 80px;
   line-height: 120%;
-  margin: 30px 0;
+  margin: 23px 0;
+  /* margin: 30px 0;
+  letter-spacing: 0.8px;
+  word-spacing: -1.6px; */
 }
 
 .header-text {
@@ -149,6 +155,7 @@ body {
   font-size: 16px;
   line-height: 160%;
   margin-bottom: 50px;
+  padding: 15px 1px;
 }
 
 .header-features {
@@ -161,15 +168,29 @@ body {
   position: relative;
 }
 
+.separator {
+  width: 150px;
+  height: 2px;
+  background: #5c8ee6;
+}
+
 .header-features-item {
-  padding: 30px 50px;
+  padding: 40px 50px;
+  width: 288px;
   border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header-button {
+  padding: 15px 70px;
+  /* margin-top: 25px; */
 }
 
 .header-features-text {
   font-weight: 400;
   font-size: 16px;
   line-height: 160%;
+  margin-bottom: 0;
+  margin-top: 18px;
 }
 
 .header-features-item:not(:last-child) {
@@ -183,16 +204,17 @@ body {
 }
 
 .section-title {
-  font-family: "Bebas Neue Pro";
+  font-family: "Bebas Neue Regular";
   font-size: 60px;
   line-height: 120%;
   color: #292d33;
+  padding: 17px 2px;
 }
 
 .steps {
   display: flex;
   list-style: none;
-  padding: 0;
+  padding: 20px 0;
   gap: 30px;
 }
 
@@ -201,12 +223,13 @@ body {
 }
 
 .steps-num {
-  font-family: "Bebas Neue Pro";
+  font-family: "Bebas Neue Regular";
   font-size: 48px;
   line-height: 120%;
   color: #5c8ee6;
   display: flex;
   align-items: center;
+  padding: 9px 0;
 }
 
 .steps-num::after {
