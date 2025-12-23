@@ -2,17 +2,38 @@ const navbar = document.querySelector(".navbar");
 const logo = document.querySelector(".logo-svg use");
 const mMenuToggle = document.querySelector(".mobile-menu-toggle");
 const menu = document.querySelector(".mobile-menu");
+
+const lightModeOn = (event) => {
+  navbar.classList.add("navbar-light");
+  logo.href.baseVal = "img/sprite.svg#logo";
+};
+
+const lightModeOff = (event) => {
+  navbar.classList.remove("navbar-light");
+  logo.href.baseVal = "img/sprite.svg#logo-light";
+};
+
+const openMenu = (event) => {
+  //функция открывания меню
+  menu.classList.add("is-open"); //добавляем класс is-open
+  mMenuToggle.classList.add("close-menu"); //меняем иконку на крестик
+  document.body.style.overflow = "hidden"; //блокируем прокрутку страницы
+  lightModeOn();
+};
+
+const closeMenu = (event) => {
+  //функция закрывания меню
+  menu.classList.remove("is-open"); //удаляем класс is-open
+  mMenuToggle.classList.remove("close-menu"); //меняем иконку на гамбургер
+  document.body.style.overflow = "auto"; //разблокируем прокрутку страницы
+  lightModeOff();
+};
+
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 1) {
-    navbar.classList.add("navbar-light");
-    logo.href.baseVal = "img/sprite.svg#logo";
-  } else {
-    navbar.classList.remove("navbar-light");
-    logo.href.baseVal = "img/sprite.svg#logo-light";
-  }
+  this.scrollY > 1 ? lightModeOn() : lightModeOff();
 });
 
 mMenuToggle.addEventListener("click", (event) => {
   event.preventDefault();
-  menu.classList.toggle("is-open");
+  menu.classList.contains("is-open") ? closeMenu() : openMenu();
 });
