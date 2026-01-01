@@ -67,14 +67,6 @@ body {
   height: 4.5rem;
 }
 
-.logo {
-  display: none;
-}
-
-.phone-icon {
-  fill: #fff;
-}
-
 .logo-svg {
   width: 9rem;
   height: 2.75rem;
@@ -543,5 +535,42 @@ body {
 
   .header-content {
     padding-top: 3rem;
+  }
+
+  .header-features-item {
+    width: 100%;
+    min-width: 280px;
+  }
+
+  .swiper {
+    overflow: hidden;
+  }
+
+  .slider-buttons {
+    height: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 0.875rem;
+  }
+
+  .header-title {
+    font-size: 2.5rem;
+    line-height: 110%;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .navbar-button {
+    padding: 1rem;
+  }
+
+  .button {
+    padding: 1rem 2rem;
+    font-size: 0.875rem;
   }
 }
