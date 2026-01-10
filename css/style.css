@@ -306,7 +306,7 @@ body {
   margin-bottom: 1.25rem;
 }
 
-.steps-link {
+.button-link {
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -316,7 +316,7 @@ body {
   color: #5c8ee6;
 }
 
-.steps-link:before {
+.button-link:before {
   content: "";
   height: 0.0625rem;
   background: #5c8ee6;
@@ -325,7 +325,7 @@ body {
   transition: width 0.2s;
 }
 
-.steps-link:hover:before {
+.button-link:hover:before {
   width: 60px;
 }
 
@@ -452,6 +452,82 @@ body {
   color: #5c8ee6;
 }
 
+.founder {
+  min-height: 41.25rem;
+  position: relative;
+}
+
+.founder-photo {
+  position: absolute;
+  left: 0;
+  width: 40%;
+  top: 0;
+  height: 100%;
+  object-fit: cover;
+}
+
+.founder-content {
+  max-width: 45rem;
+}
+
+.founder-content-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.founder-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
+  color: #828a99;
+}
+
+.clients-wrapper {
+  display: flex;
+  gap: 3.125rem;
+}
+
+.clients-content {
+  flex-basis: 50%;
+}
+
+.clients-list {
+  list-style-type: none;
+  padding: 0;
+  columns: 2 auto;
+}
+
+.clients-list-item {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 160%;
+  color: #292d33;
+  padding: 1rem;
+}
+
+.clients-logo-list {
+  flex-shrink: 10;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.clients-logo-item {
+  flex-basis: 33%;
+  border: 1px solid #ebebf0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clients-logo {
+  max-width: 100%;
+  width: 70px;
+  height: 70px;
+}
+
 @media (max-width: 1700px) {
   html {
     font-size: 14px;
@@ -529,22 +605,30 @@ body {
     padding-left: 2rem;
     padding-right: 2rem;
   }
-}
 
-.slider-buttons {
-  display: flex;
-}
+  .slider-buttons {
+    display: flex;
+  }
 
-.steps-buttons {
-  display: flex;
-}
+  .steps-buttons {
+    display: flex;
+  }
 
-.card {
-  flex-basis: 50%;
-}
+  .card {
+    flex-basis: 50%;
+  }
 
-.trademark-card {
-  grid-template-columns: auto auto;
+  .trademark-card {
+    grid-template-columns: auto auto;
+  }
+
+  .founder-content {
+    max-width: 35rem;
+  }
+
+  .clients-content {
+    flex-basis: 60%;
+  }
 }
 
 @media (max-width: 992px) {
@@ -705,6 +789,10 @@ body {
   .trademark-cards {
     flex-direction: column;
   }
+
+  .clients-wrapper {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 768px) {
@@ -723,6 +811,12 @@ body {
   .card {
     flex-basis: 100%;
   }
+
+  .founder-content {
+    position: relative;
+    width: 100%;
+    margin-bottom: 3.125rem;
+  }
 }
 
 @media (max-width: 576px) {
@@ -730,23 +824,26 @@ body {
     max-width: 90%;
   }
 
-  .header-features-item {
-    width: 100%;
-    min-width: 280px;
+  .header-title {
+    font-size: 2rem;
   }
 
-  .swiper {
-    overflow: hidden;
-  }
-
-  .slider-buttons {
-    height: 3rem;
+  .header-content {
+    padding-top: 2rem;
   }
 
   .trademark-card {
-    grid-template-areas: 
+    grid-template-areas:
       "logo title"
       "text text";
+  }
+
+  .clients-list {
+    columns: 1;
+  }
+
+  .clients-logo-item {
+    flex-basis: 50%;
   }
 }
 
@@ -771,5 +868,9 @@ body {
   .button {
     padding: 1rem 2rem;
     font-size: 0.875rem;
+  }
+
+  .clients-logo-item {
+    flex-basis: 100%;
   }
 }
