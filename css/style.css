@@ -505,21 +505,30 @@ body {
   font-size: 1rem;
   line-height: 160%;
   color: #292d33;
-  padding: 1rem;
+  margin-bottom: 1.2rem;
 }
 
 .clients-logo-list {
   flex-shrink: 10;
   display: flex;
   flex-wrap: wrap;
+  margin-top: 1.9rem;
 }
 
 .clients-logo-item {
   flex-basis: 33%;
+  min-height: 10rem;
   border: 1px solid #ebebf0;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
+  filter: grayscale(100%);
+  transition: filter 0.2s;
+}
+
+.clients-logo-item:hover {
+  filter: grayscale(0%);
 }
 
 .clients-logo {
