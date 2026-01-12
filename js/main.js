@@ -82,12 +82,12 @@ const swiper = new Swiper(".steps-slider", {
   },
 });
 
-const swiperBlog = new Swiper(".blog-slider", {
+const blogSwiper = new Swiper(".blog-slider", {
   speed: 400,
   slidesPerView: 2,
   spaceBetween: 30,
   navigation: {
-    nextEl: ".steps-button-next",
-    prevEl: ".steps-button-prev",
+    nextEl: ".blog-button-next",
+    prevEl: ".blog-button-prev",
   },
 });
