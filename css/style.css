@@ -58,7 +58,9 @@ body {
   padding: 0;
   z-index: 2;
   border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.2);
-  transition: background-color 0.2s, height 0.2s;
+  transition:
+    background-color 0.2s,
+    height 0.2s;
 }
 
 .navbar-light {
@@ -879,7 +881,9 @@ body {
   position: relative;
   transform: translateY(-10%);
   opacity: 0;
-  transition: transform 0.3s, opacity 0.3s;
+  transition:
+    transform 0.3s,
+    opacity 0.3s;
 }
 
 .modal-close {
@@ -1313,5 +1317,41 @@ body {
 
   .clients-logo-item {
     flex-basis: 100%;
+  }
+}
+
+/* <840 */
+@media (max-width: 840px) {
+  html,
+  body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  .modal {
+    max-width: 100%;
+  }
+
+  .founder {
+    min-height: auto;
+  }
+
+  .founder-photo {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    margin: 0 0 16px 0;
+  }
+
+  .founder-content-wrapper {
+    justify-content: flex-start;
+  }
+
+  .founder-content {
+    max-width: 100%;
   }
 }
