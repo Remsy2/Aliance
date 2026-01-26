@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
@@ -16,11 +16,11 @@
     <title>Aliance Production</title>
   </head>
 
-  <body>
+  <body class="front-page">
     <div class="mobile-menu">
       <ul class="mobile-menu-nav">
         <li class="mobile-menu-nav-item">
-          <a href="#" class="mobile-menu-link">О компании</a>
+          <a href="/about.html" class="mobile-menu-link">О компании</a>
         </li>
         <li class="mobile-menu-nav-item">
           <a href="#" class="mobile-menu-link">Контрактное производство</a>
@@ -39,7 +39,9 @@
           </ul>
         </li>
         <li class="mobile-menu-nav-item">
-          <a href="#" class="mobile-menu-link">Собственные торговые марки</a>
+          <a href="own-product.html" class="mobile-menu-link"
+            >Собственные торговые марки</a
+          >
         </li>
         <li class="mobile-menu-nav-item">
           <a href="#" class="mobile-menu-link">Новости</a>
@@ -84,18 +86,22 @@
         <div class="mobile-menu-line"></div>
       </a>
       <a href="./" class="header-logo">
-        <svg class="logo-svg">
+        <svg class="logo-svg logo-dark">
           <use href="img/sprite.svg#logo-light"></use>
         </svg>
       </a>
 
       <ul class="header-nav">
-        <li><a href="#" class="header-nav-link">О компании</a></li>
+        <li><a href="/about.html" class="header-nav-link">О компании</a></li>
         <li>
-          <a href="#" class="header-nav-link">Контрактное производство</a>
+          <a href="/contract-product.html" class="header-nav-link"
+            >Контрактное производство</a
+          >
         </li>
         <li>
-          <a href="#" class="header-nav-link">Собственные торговые марки</a>
+          <a href="/own-product.html" class="header-nav-link"
+            >Собственные торговые марки</a
+          >
         </li>
         <li><a href="#" class="header-nav-link">Новости</a></li>
         <li><a href="#" class="header-nav-link">Контакты</a></li>
@@ -593,7 +599,8 @@
       <div class="bg-grey section-cta">
         <img src="img/cta.png" alt="call to action" class="cta-image" />
         <div class="cta-form-wrapper container">
-          <form action="#" class="cta-form">
+            <form action="handler.php" method="POST" class="cta-form">
+
             <h2 class="section-title cta-form-title">Хотите сотрудничать?</h2>
             <p class="cta-form-text">
               Оставьте заявку, наш менеджер свяжется с Вами в ближайшее время
@@ -602,33 +609,35 @@
             </p>
             <div class="input-group-wrapper">
               <div class="input-group modal-input-group">
-                <input
-                  id="user-name"
-                  type="text"
-                  class="input"
-                  placeholder=" "
-                />
-                <label
-                  class="input-group-label modal-input-label"
-                  for="user-name"
-                  >Имя</label
-                >
-              </div>
-              <!-- /.input-group -->
-              <div class="input-group modal-input-group">
-                <input
-                  id="user-phone"
-                  type="tel"
-                  class="input"
-                  placeholder=" "
-                />
+  <input
+    id="user-name"
+    name="username"
+    type="text"
+    class="input"
+    placeholder=" "
+    required
+  />
+  <label
+    class="input-group-label modal-input-label"
+    for="user-name"
+  >Имя</label>
+</div>
 
-                <label
-                  class="input-group-label modal-input-label"
-                  for="user-phone"
-                  >Номер телефона</label
-                >
-              </div>
+<div class="input-group modal-input-group">
+  <input
+    id="user-phone"
+    name="userphone"
+    type="tel"
+    class="input"
+    placeholder=" "
+    required
+  />
+  <label
+    class="input-group-label modal-input-label"
+    for="user-phone"
+  >Номер телефона</label>
+</div>
+
               <!-- /.input-group -->
             </div>
             <!-- /.input-group-wrapper -->
@@ -759,7 +768,7 @@
         <div class="footer-wrapper">
           <div class="footer-legal">
             <p class="footer-copyright">
-              &copy; 2022 «Aliance Production». Все права защищены.
+              &copy; <?php echo date('d.m.Y')?> «Aliance Production». Все права защищены.
             </p>
             <a href="#" class="footer-policy">Политики конфиденциальности</a>
           </div>
@@ -777,64 +786,71 @@
       <!-- /.container -->
     </footer>
 
-    <div class="modal">
-      <div class="modal-dialog">
-        <h2 class="modal-title">Есть вопросы?</h2>
-        <a href="#" class="modal-close" data-toggle="modal">
-          <svg class="close-icon" width="24" height="24">
-            <use href="img/sprite.svg#close"></use>
-          </svg>
-        </a>
-        <p class="modal-text">
-          Оставьте заявку, наш менеджер свяжется с Вами в ближайшее время
-          ответит на все интересующие вопросы и поможем даже в самых сложных
-          случаях!
-        </p>
-        <form action="#" class="modal-form">
-          <div class="input-group-wrapper input-group-vertical">
-            <div class="input-group">
-              <input
-                id="modal-user-name"
-                type="text"
-                class="input modal-input"
-                placeholder=" "
-              />
-              <label class="input-group-label" for="modal-user-name">Имя</label>
-            </div>
-            <!-- /.input-group -->
-            <div class="input-group">
-              <input
-                id="modal-user-phone"
-                type="tel"
-                class="input modal-input"
-                placeholder=" "
-              />
+   <div class="modal">
+  <div class="modal-dialog">
+    <h2 class="modal-title">Есть вопросы?</h2>
 
-              <label class="input-group-label" for="modal-user-phone"
-                >Номер телефона</label
-              >
-            </div>
-            <!-- /.input-group -->
-          </div>
-          <!-- /.input-group-wrapper -->
-          <div class="modal-form-footer">
-            <button type="submit" class="button modal-form-button">
-              Отправить заявку
-            </button>
-            <div class="notify">
-              <svg class="notify-icon" width="14" height="14">
-                <use href="img/sprite.svg#shield"></use>
-              </svg>
-              <p class="notify-text">
-                Обращаясь к нам вы получаете не только профессиональную работу,
-                но и абсолютную конфиденциальность информации!
-              </p>
-            </div>
-          </div>
-          <!-- /.modal-form-footer -->
-        </form>
+    <a href="#" class="modal-close" data-toggle="modal">
+      <svg class="close-icon" width="24" height="24">
+        <use href="img/sprite.svg#close"></use>
+      </svg>
+    </a>
+
+    <p class="modal-text">
+      Оставьте заявку, наш менеджер свяжется с Вами в ближайшее время
+      ответит на все интересующие вопросы и поможем даже в самых сложных
+      случаях!
+    </p>
+
+    <form action="handler.php" method="POST" class="modal-form">
+      <div class="input-group-wrapper input-group-vertical">
+
+        <div class="input-group">
+          <input
+            id="modal-user-name"
+            name="username"
+            type="text"
+            class="input modal-input"
+            placeholder=" "
+            required
+          />
+          <label for="modal-user-name">Имя</label>
+        </div>
+
+        <div class="input-group">
+          <input
+            id="modal-user-phone"
+            name="userphone"
+            type="tel"
+            class="input modal-input"
+            placeholder=" "
+            required
+          />
+          <label for="modal-user-phone">Номер телефона</label>
+        </div>
+
       </div>
-    </div>
+
+      <div class="modal-form-footer">
+        <button type="submit" class="button modal-form-button">
+          Отправить заявку
+        </button>
+
+        <div class="notify">
+          <svg class="notify-icon" width="14" height="14">
+            <use href="img/sprite.svg#shield"></use>
+          </svg>
+          <p class="notify-text">
+            Обращаясь к нам вы получаете не только профессиональную работу,
+            но и абсолютную конфиденциальность информации!
+          </p>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
+
 
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/main.js"></script>
