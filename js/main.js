@@ -118,3 +118,34 @@ document.addEventListener("keyup", (event) => {
     modal.classList.toggle("is-open");
   }
 });
+
+const forms = document.querySelectorAll("form");
+forms.forEach((form) => {
+  const validation = new JustValidate(form, {
+    errorFieldCssClass: "is-invalid",
+  });
+  validation
+
+    .addField("[name=username]", [
+      {
+        rule: "required",
+        errorMessage: "Укажите имя",
+      },
+
+      {
+        rule: "maxLength",
+        value: 50,
+        errorMessage: "Имя не должно превышать 30 символов",
+      },
+    ])
+
+    .addField("[name=userphone]", [
+      {
+        rule: "required",
+        errorMessage: "Укажите телефон",
+      },
+    ])
+    .onSuccess((event) => {
+      console.log(event.target.getAttribute("method"));
+    });
+});

@@ -711,6 +711,22 @@ body {
   padding: 0 10px;
 }
 
+.input.is-invalid {
+  border: 1px solid #ff4d4f;
+}
+
+.just-validate-error-label {
+  position: absolute;
+  top: 0rem;
+  right: 10px;
+  background-color: inherit;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  display: inline-block;
+}
+
 .cta-form-footer {
   display: flex;
   margin-top: 1.875rem;
