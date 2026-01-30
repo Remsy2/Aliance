@@ -146,6 +146,26 @@ forms.forEach((form) => {
       },
     ])
     .onSuccess((event) => {
-      console.log(event.target.getAttribute("method"));
+      const thisForm = event.target;
+      const formData = new FormData(thisForm);
+      const ajaxSend = (formData) => {
+        fetch(thisForm.getAttribute("action"), {
+          method: thisForm.getAttribute("method"),
+          body: formData,
+        })
+          .then((response) => {
+            if (response.ok) {
+              modal.classList.toggle("is-open");
+              thisForm.reset();
+              alert("Форма отправлена успешно! =))");
+            } else {
+              alert("Ошибка отправки формы");
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      };
+      ajaxSend(formData);
     });
 });
