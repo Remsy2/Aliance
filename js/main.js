@@ -169,3 +169,224 @@ forms.forEach((form) => {
       ajaxSend(formData);
     });
 });
+
+(() => {
+  const SELECTOR = ".phone-mask";
+
+  const getDigits = (value) => (value || "").replace(/\D/g, "");
+
+  const normalizeRuDigits = (digits) => {
+    if (!digits) return "";
+    if (digits[0] === "8") digits = "7" + digits.slice(1);
+    if (digits[0] === "9") digits = "7" + digits; // 9xxxxxxxxx -> 79xxx...
+    if (digits[0] !== "7") digits = "7" + digits;
+    return digits.slice(0, 11);
+  };
+
+  const formatRuPhone = (digits11) => {
+    if (!digits11) return "";
+
+    const d = digits11;
+    let out = "+7";
+    if (d.length === 1) return out;
+
+    out += " (";
+    out += d.substring(1, Math.min(4, d.length));
+    if (d.length >= 4) out += ") ";
+    if (d.length <= 4) return out;
+
+    out += d.substring(4, Math.min(7, d.length));
+    if (d.length >= 7) out += "-";
+    if (d.length <= 7) return out;
+
+    out += d.substring(7, Math.min(9, d.length));
+    if (d.length >= 9) out += "-";
+    if (d.length <= 9) return out;
+
+    out += d.substring(9, Math.min(11, d.length));
+    return out;
+  };
+
+  // --- Caret helpers ---
+  // Сколько цифр было введено ДО позиции каретки?
+  const digitsCountBeforeCaret = (str, caretPos) => {
+    let count = 0;
+    for (let i = 0; i < Math.min(caretPos, str.length); i++) {
+      if (/\d/.test(str[i])) count++;
+    }
+    return count;
+  };
+
+  // Найти позицию каретки в новом отформатированном значении,
+  // чтобы она стояла после N-й цифры
+  const caretPosAfterNDigits = (formatted, nDigits) => {
+    if (nDigits <= 0) return 0;
+    let count = 0;
+    for (let i = 0; i < formatted.length; i++) {
+      if (/\d/.test(formatted[i])) count++;
+      if (count >= nDigits) return i + 1;
+    }
+    return formatted.length;
+  };
+
+  const safeSetCaret = (input, pos) => {
+    try {
+      input.setSelectionRange(pos, pos);
+    } catch (_) {}
+  };
+
+  // --- Validation UI ---
+  const getErrorBox = (input) => {
+    // ищем рядом .phone-error (в том же родителе)
+    const parent = input.parentElement;
+    if (!parent) return null;
+    const box = parent.querySelector(".phone-error");
+    return box || null;
+  };
+
+  const setInvalid = (input, message) => {
+    input.classList.add("is-invalid");
+    input.setAttribute("aria-invalid", "true");
+    input.dataset.error = message;
+
+    const box = getErrorBox(input);
+    if (box) {
+      box.textContent = message;
+      box.classList.add("show");
+    }
+  };
+
+  const clearInvalid = (input) => {
+    input.classList.remove("is-invalid");
+    input.removeAttribute("aria-invalid");
+    delete input.dataset.error;
+
+    const box = getErrorBox(input);
+    if (box) {
+      box.textContent = "";
+      box.classList.remove("show");
+    }
+  };
+
+  const validate = (input) => {
+    const digits = normalizeRuDigits(getDigits(input.value));
+    if (!input.value) {
+      clearInvalid(input);
+      return true;
+    }
+    if (digits.length !== 11) {
+      setInvalid(input, "Введите номер полностью: 11 цифр");
+      return false;
+    }
+    clearInvalid(input);
+    return true;
+  };
+
+  // --- Main handlers ---
+  const handleFormat = (input) => {
+    const oldValue = input.value;
+    const oldCaret = input.selectionStart ?? oldValue.length;
+
+    // сколько цифр было до каретки в "старом" значении
+    const digitsBefore = digitsCountBeforeCaret(oldValue, oldCaret);
+
+    const rawDigits = getDigits(oldValue);
+    const digits = normalizeRuDigits(rawDigits);
+
+    const newValue = formatRuPhone(digits);
+    input.value = newValue;
+
+    // ставим каретку после такого же количества цифр
+    const newCaret = caretPosAfterNDigits(newValue, digitsBefore);
+    safeSetCaret(input, newCaret);
+  };
+
+  const onInput = (e) => {
+    const input = e.target;
+    if (!input.matches(SELECTOR)) return;
+    handleFormat(input);
+    validate(input);
+  };
+
+  const onKeyDown = (e) => {
+    const input = e.target;
+    if (!input.matches(SELECTOR)) return;
+
+    // Если Backspace на самом начале — не даём ломать "+7"
+    if (e.key === "Backspace") {
+      const pos = input.selectionStart ?? 0;
+      // позиция до "+7" (0..2) или до " (" (0..4) — просто очищаем
+      const digits = normalizeRuDigits(getDigits(input.value));
+      if (digits.length <= 1) {
+        input.value = "";
+        clearInvalid(input);
+        e.preventDefault();
+        return;
+      }
+      // Если курсор попал на символы "+7 (" — не даём удалять "скобки/пробелы" бесконечно
+      // Удаление цифр всё равно сработает корректно через onInput
+      if (pos <= 4) {
+        // оставляем курсор на позиции 4 (после "+7 (")
+        setTimeout(() => safeSetCaret(input, 4), 0);
+      }
+    }
+  };
+
+  const onPaste = (e) => {
+    const input = e.target;
+    if (!input.matches(SELECTOR)) return;
+    // после вставки форматируем
+    setTimeout(() => {
+      handleFormat(input);
+      validate(input);
+    }, 0);
+  };
+
+  const onFocus = (e) => {
+    const input = e.target;
+    if (!input.matches(SELECTOR)) return;
+
+    if (!input.value) {
+      input.value = "+7 (";
+      safeSetCaret(input, input.value.length);
+    } else {
+      // при фокусе просто провалидируем, без навязчивости
+      validate(input);
+    }
+  };
+
+  const onBlur = (e) => {
+    const input = e.target;
+    if (!input.matches(SELECTOR)) return;
+
+    // если оставили "+7 (" — очищаем
+    const digits = normalizeRuDigits(getDigits(input.value));
+    if (digits.length <= 1) {
+      input.value = "";
+      clearInvalid(input);
+      return;
+    }
+
+    // финальная валидация при уходе
+    validate(input);
+  };
+
+  // чтобы можно было валидировать форму перед submit
+  const onSubmit = (e) => {
+    const form = e.target;
+    if (!(form instanceof HTMLFormElement)) return;
+    const inputs = form.querySelectorAll(SELECTOR);
+    let ok = true;
+    inputs.forEach((inp) => {
+      if (!validate(inp)) ok = false;
+    });
+    if (!ok) e.preventDefault();
+  };
+
+  document.addEventListener("input", onInput);
+  document.addEventListener("keydown", onKeyDown);
+  document.addEventListener("paste", onPaste);
+  document.addEventListener("focusin", onFocus);
+  document.addEventListener("focusout", onBlur);
+  document.addEventListener("submit", onSubmit);
+})();

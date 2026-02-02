@@ -822,7 +822,7 @@
             id="modal-user-phone"
             name="userphone"
             type="tel"
-            class="input modal-input"
+            class="input modal-input phone-mask"
             placeholder=" "
             required
           />
