@@ -628,7 +628,7 @@
     id="user-phone"
     name="userphone"
     type="tel"
-    class="input"
+    class="input phone-mask"
     placeholder=" "
     required
   />
@@ -852,8 +852,9 @@
 </div>
 
 
-    <script src="js/swiper-bundle.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/just-validate.production.min.js"></script>
+<script src="js/swiper-bundle.min.js"></script>
+<script src="js/just-validate.production.min.js"></script>
+<script src="js/main.js"></script>
+
   </body>
 </html>

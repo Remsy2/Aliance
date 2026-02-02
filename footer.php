@@ -205,7 +205,7 @@
           <input
             id="modal-user-name"
             type="text"
-            class="input modal-input"
+            class="input modal-input phone-mask"
             name="username"
             placeholder=" "
             maxlength="100"
@@ -218,7 +218,7 @@
           <input
             id="modal-user-phone"
             type="tel"
-            class="input modal-input"
+            class="input modal-input phone-mask"
             name="userphone"
             placeholder=" "
             maxlength="30"
@@ -252,6 +252,8 @@
 </div>
 
 <script src="js/swiper-bundle.min.js"></script>
+<script src="js/just-validate.production.min.js"></script>
 <script src="js/main.js"></script>
+
 </body>
 </html>
