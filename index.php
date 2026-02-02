@@ -23,7 +23,7 @@
           <a href="/about.html" class="mobile-menu-link">О компании</a>
         </li>
         <li class="mobile-menu-nav-item">
-          <a href="#" class="mobile-menu-link">Контрактное производство</a>
+          <a href="/contracts.php" class="mobile-menu-link">Контрактное производство</a>
           <ul class="mobile-submenu">
             <li class="mobile-submenu-item">
               <a class="mobile-submenu-link" href="#">Автомобильная химия</a>
@@ -39,7 +39,7 @@
           </ul>
         </li>
         <li class="mobile-menu-nav-item">
-          <a href="own-product.html" class="mobile-menu-link"
+          <a href="/trademarks.php" class="mobile-menu-link"
             >Собственные торговые марки</a
           >
         </li>
@@ -743,7 +743,7 @@
           <div class="footer-menu-wrapper">
             <ul class="footer-menu-list">
               <li class="footer-menu-item">
-                <a href="#" class="footer-menu-link footer-menu-link-bold"
+                <a href="/about.php" class="footer-menu-link footer-menu-link-bold"
                   >О компании</a
                 >
               </li>
