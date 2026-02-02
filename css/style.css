@@ -197,12 +197,31 @@ body {
   color: #fff;
 }
 
+.breadcrumbs-link {
+  color: #828a99;
+}
+
+.breadcrumbs-item.active.breadcrumbs-link {
+  color: #292d33;
+}
+
+.breadcrumbs-item:not(:last-child)::after {
+  content: "-";
+  margin-left: 10px;
+}
+
+.page-header-bg-image .breadcrumbs-link,
+.page-header-bg-image.breadcrumbs-item.active .breadcrumbs-link {
+  color: #fff;
+}
+
 .header-title {
   max-width: 67.5rem;
   font-family: "Bebas Neue Regular";
   font-size: 5rem;
   line-height: 120%;
   margin: 1.4375rem 0;
+  letter-spacing: 0.8px;
 }
 
 .header-text {

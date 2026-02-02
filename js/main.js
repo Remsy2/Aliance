@@ -98,26 +98,52 @@ const blogSwiper = new Swiper(".blog-slider", {
   },
 });
 
-const modal = document.querySelector(".modal");
-const modalDialog = document.querySelector(".modal-dialog");
+let currentModal; //текущее модальное окно
+let modalDialog; //окно диалога внутри модального окна
+let alertModal = document.querySelector("#alert-modal"); //окно с предупреждением
 
-document.addEventListener("click", (event) => {
-  if (
-    event.target.dataset.toggle == "modal" ||
-    event.target.parentNode.dataset.toggle == "modal" ||
-    (!event.composedPath().includes(modalDialog) &&
-      modal.classList.contains("is-open"))
-  ) {
-    event.preventDefault();
-    modal.classList.toggle("is-open");
-  }
+const modalButtons = document.querySelectorAll("[data-toggle=modal]"); // переключатели модальных окон
+modalButtons.forEach((button) => {
+  /* клик по переключателю */
+  button.addEventListener("click", (event) => {
+    event.preventDefault(); /* определяем текущее открытое окно */
+    currentModal = document.querySelector(
+      button.dataset.target,
+    ); /* открываем текущее окно */
+    currentModal.classList.toggle("is-open"); /* назначаем диалоговое окно */
+    modalDialog =
+      currentModal.querySelector(
+        ".modal-dialog",
+      ); /* отслеживаем клик по окну и пустым областям */
+    currentModal.addEventListener("click", (event) => {
+      /* если клик в пустую область (не диалог) */
+      if (!event.composedPath().includes(modalDialog)) {
+        /* закрываем окно */
+        currentModal.classList.remove("is-open");
+      }
+    });
+  });
 });
 
+/* ловим событие нажатием кнопки  */
 document.addEventListener("keyup", (event) => {
-  if (event.key == "Escape" && modal.classList.contains("is-open")) {
-    modal.classList.toggle("is-open");
+  if (event.key == "Escape" && currentModal.classList.contains("is-open")) {
+    /* закрываем окно */
+    currentModal.classList.toggle("is-open");
   }
 });
+
+// document.addEventListener("click", (event) => {
+//   if (
+//     event.target.dataset.toggle == "modal" ||
+//     event.target.parentNode.dataset.toggle == "modal" ||
+//     (!event.composedPath().includes(modalDialog) &&
+//       modal.classList.contains("is-open"))
+//   ) {
+//     event.preventDefault();
+//     modal.classList.toggle("is-open");
+//   }
+// });
 
 const forms = document.querySelectorAll("form");
 forms.forEach((form) => {
@@ -157,7 +183,20 @@ forms.forEach((form) => {
             if (response.ok) {
               modal.classList.toggle("is-open");
               thisForm.reset();
-              alert("Форма отправлена успешно! =))");
+              currentModal.classList.remove("is-open");
+              alertModal.classList.add("is-open");
+              currentModal = alertModal;
+              modalDialog =
+                currentModal.querySelector(
+                  ".modal-dialog",
+                ); /* отслеживаем клик по окну и пустым областям */
+              currentModal.addEventListener("click", (event) => {
+                /* если клик в пустую область (не диалог) */
+                if (!event.composedPath().includes(modalDialog)) {
+                  /* закрываем окно */
+                  currentModal.classList.remove("is-open");
+                }
+              });
             } else {
               alert("Ошибка отправки формы");
             }
