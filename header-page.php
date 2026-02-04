@@ -38,7 +38,7 @@
           </ul>
         </li>
         <li class="mobile-menu-nav-item">
-          <a href="/own-product.html" class="mobile-menu-link"
+          <a href="/trademarks.php" class="mobile-menu-link"
             >Собственные торговые марки</a
           >
         </li>

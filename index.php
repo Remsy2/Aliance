@@ -20,7 +20,7 @@
     <div class="mobile-menu">
       <ul class="mobile-menu-nav">
         <li class="mobile-menu-nav-item">
-          <a href="/about.html" class="mobile-menu-link">О компании</a>
+          <a href="/about.php" class="mobile-menu-link">О компании</a>
         </li>
         <li class="mobile-menu-nav-item">
           <a href="/contracts.php" class="mobile-menu-link">Контрактное производство</a>
@@ -92,14 +92,14 @@
       </a>
 
       <ul class="header-nav">
-        <li><a href="/about.html" class="header-nav-link">О компании</a></li>
+        <li><a href="/about." class="header-nav-link">О компании</a></li>
         <li>
-          <a href="/contract-product.html" class="header-nav-link"
+          <a href="/contracts.php" class="header-nav-link"
             >Контрактное производство</a
           >
         </li>
         <li>
-          <a href="/own-product.html" class="header-nav-link"
+          <a href="/trademarks.php" class="header-nav-link"
             >Собственные торговые марки</a
           >
         </li>

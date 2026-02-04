@@ -38,7 +38,7 @@
           </ul>
         </li>
         <li class="mobile-menu-nav-item">
-          <a href="/own-product.html" class="mobile-menu-link"
+          <a href="/trademarks.php" class="mobile-menu-link"
             >Собственные торговые марки</a
           >
         </li>
@@ -91,12 +91,12 @@
       </a>
 
       <ul class="header-nav">
-        <li><a href="/about.html" class="header-nav-link">О компании</a></li>
+        <li><a href="/about.php" class="header-nav-link">О компании</a></li>
         <li>
-          <a href="#" class="header-nav-link">Контрактное производство</a>
+          <a href="/contracts.php" class="header-nav-link">Контрактное производство</a>
         </li>
         <li>
-          <a href="#" class="header-nav-link">Собственные торговые марки</a>
+          <a href="/trademarks.php" class="header-nav-link">Собственные торговые марки</a>
         </li>
         <li><a href="#" class="header-nav-link">Новости</a></li>
         <li><a href="#" class="header-nav-link">Контакты</a></li>
