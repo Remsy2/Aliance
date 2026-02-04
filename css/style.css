@@ -12,6 +12,7 @@ html {
   font-family: "Bebas Neue Regular";
   src: url("../fonts/BebasNeueRegular.woff") format("woff");
   font-weight: normal;
+  font-display: swap;
   font-style: normal;
 }
 
