@@ -92,7 +92,7 @@
       </a>
 
       <ul class="header-nav">
-        <li><a href="/about." class="header-nav-link">О компании</a></li>
+        <li><a href="/about.php" class="header-nav-link">О компании</a></li>
         <li>
           <a href="/contracts.php" class="header-nav-link"
             >Контрактное производство</a

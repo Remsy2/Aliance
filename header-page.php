@@ -118,7 +118,7 @@
 
     <!-- /.navbar -->
 
-<header class="page-header <?= $header_style;?">
+<header class="page-header <?php echo $header_style; ?>">
 <!-- <img src="img/thumb.png" alt="" class="page-header-thumb" /> -->
 <div class="container">
 <div class="seporator"></div>
