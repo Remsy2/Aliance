@@ -301,6 +301,7 @@
       <div class="modal-form-footer">
         <button type="submit" class="button modal-form-button">
           Отправить заявку
+        
         </button>
         <div class="notify">
           <svg class="notify-icon" width="14" height="14">
