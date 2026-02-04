@@ -123,7 +123,7 @@
 <div class="container">
 <div class="seporator"></div>
 <h1 class="page-header-title"><?= $page_title ?></h1>
-<ul class="хлебные крошки">
+<ul class="breadcrumbs">
 <li class="breadcrumbs-item">
 <a href="#" class="breadcrumbs-link">Главная</a>
 </li>
