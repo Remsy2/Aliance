@@ -13,13 +13,13 @@
     />
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
-    <title>Собственные торговые марки</title>
+    <title>Контрактное производство</title>
   </head>
   <body>
     <div class="mobile-menu">
       <ul class="mobile-menu-nav">
         <li class="mobile-menu-nav-item">
-          <a href="/about.html" class="mobile-menu-link">О компании</a>
+          <a href="#" class="mobile-menu-link">О компании</a>
         </li>
         <li class="mobile-menu-nav-item">
           <a href="#" class="mobile-menu-link">Контрактное производство</a>
@@ -38,7 +38,7 @@
           </ul>
         </li>
         <li class="mobile-menu-nav-item">
-          <a href="/own-product.html" class="mobile-menu-link"
+          <a href="trademarks.php" class="mobile-menu-link"
             >Собственные торговые марки</a
           >
         </li>
@@ -79,7 +79,7 @@
       </div>
     </div>
     <nav class="navbar navbar-light">
-      <a href="#" class="mobile-menu-toggle">
+      <a href="#" class="mobile-menu-toggle" aria-label="Открыть меню">
         <div class="mobile-menu-line"></div>
         <div class="mobile-menu-line"></div>
         <div class="mobile-menu-line"></div>
@@ -91,12 +91,12 @@
       </a>
 
       <ul class="header-nav">
-        <li><a href="/about.html" class="header-nav-link">О компании</a></li>
+        <li><a href="about.php" class="header-nav-link">О компании</a></li>
         <li>
-          <a href="#" class="header-nav-link">Контрактное производство</a>
+          <a href="contracts.php" class="header-nav-link">Контрактное производство</a>
         </li>
         <li>
-          <a href="#" class="header-nav-link">Собственные торговые марки</a>
+          <a href="trademarks.php" class="header-nav-link">Собственные торговые марки</a>
         </li>
         <li><a href="#" class="header-nav-link">Новости</a></li>
         <li><a href="#" class="header-nav-link">Контакты</a></li>
@@ -116,35 +116,101 @@
       </button>
     </nav>
 
-    <section class="section trademark">
+    <section class="section production">
       <div class="container">
         <div class="separator"></div>
-        <h2 class="section-title">Собственные торговые марки</h2>
-
-        <div class="trademark-cards">
-          <div class="trademark-card">
-            <svg class="trademark-card-logo">
-              <use href="img/sprite.svg#AGTECH"></use>
-            </svg>
-            <h3 class="trademark-card-title">Автохимия AG-Tech</h3>
-            <p class="trademark-card-text">
-              Для современного мира разбавленное изрядной долей эмпатии,
-              рациональное мышление создаёт предпосылки для поставленных
-              обществом задач.
-            </p>
-          </div>
-          <div class="trademark-card">
-            <svg class="trademark-card-logo">
-              <use href="img/sprite.svg#AP"></use>
-            </svg>
-            <h3 class="trademark-card-title">Автохимия AP</h3>
-            <p class="trademark-card-text">
-              Для современного мира разбавленное изрядной долей эмпатии,
-              рациональное мышление создаёт предпосылки для поставленных
-              обществом задач.
-            </p>
-          </div>
+        <h2 class="section-title">Контрактное производство</h2>
+        <div class="cards">
+          <a href="#" class="card">
+            <div class="card-content">
+              <h3 class="card-title">Автомобильная химия</h3>
+              <p class="card-text">
+                Безусловно, сплочённость команды профессионалов позволяет
+                оценить значение форм воздействия.
+              </p>
+            </div>
+            <!-- /.card-content -->
+            <img
+              src="img/avto_chemic.png"
+              alt="Автомобильная химия"
+              class="card-image"
+            />
+          </a>
+          <a href="#" class="card">
+            <div class="card-content">
+              <h3 class="card-title">Бытовая химия</h3>
+              <p class="card-text">
+                А также стремящиеся вытеснить традиционное производство,
+                нанотехнологии функционально разнесены на независимые элементы.
+              </p>
+            </div>
+            <!-- /.card-content -->
+            <img
+              src="img/bitovaya-chemic.png"
+              alt="Бытовая химия"
+              class="card-image"
+            />
+          </a>
+          <a href="#" class="card">
+            <div class="card-content">
+              <h3 class="card-title">Дезинфицирующие средства</h3>
+              <p class="card-text">
+                Лишь интерактивные прототипы призваны к ответу.
+              </p>
+            </div>
+            <!-- /.card-content -->
+            <img
+              src="img/dez_sredstava.png"
+              alt="Дезинфицирующие средства"
+              class="card-image"
+            />
+          </a>
+          <a href="#" class="card">
+            <div class="card-content">
+              <h3 class="card-title">Пищевые аэрозоли</h3>
+              <p class="card-text">
+                Безусловно, сплочённость команды профессионалов позволяет
+                оценить значение форм воздействия.
+              </p>
+            </div>
+            <!-- /.card-content -->
+            <img
+              src="img/piwiviye-aerozoli.png"
+              alt="Пищевые аэрозоли"
+              class="card-image"
+            />
+          </a>
+          <a href="#" class="card">
+            <div class="card-content">
+              <h3 class="card-title">Косметическая продукция</h3>
+              <p class="card-text">
+                Лишь интерактивные прототипы призваны к ответу.
+              </p>
+            </div>
+            <!-- /.card-content -->
+            <img
+              src="img/cosmetic.png"
+              alt="Косметическая продукция"
+              class="card-image"
+            />
+          </a>
+          <a href="#" class="card">
+            <div class="card-content">
+              <h3 class="card-title">Краски аэрозольные</h3>
+              <p class="card-text">
+                А также стремящиеся вытеснить традиционное производство,
+                нанотехнологии функционально разнесены на независимые элементы.
+              </p>
+            </div>
+            <!-- /.card-content -->
+            <img
+              src="img/kraski-aerozolniye.png"
+              alt="Краски аэрозольные"
+              class="card-image"
+            />
+          </a>
         </div>
+        <!-- /.cards -->
       </div>
     </section>
     <section class="cta">
@@ -338,7 +404,7 @@
     <div class="modal">
       <div class="modal-dialog">
         <h2 class="modal-title">Есть вопросы?</h2>
-        <a href="#" class="modal-close" data-toggle="modal">
+        <a href="#" class="modal-close" data-toggle="modal" aria-label="Закрыть">
           <svg class="close-icon" width="24" height="24">
             <use href="img/sprite.svg#close"></use>
           </svg>

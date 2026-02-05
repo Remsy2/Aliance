@@ -106,132 +106,109 @@ const modalButtons = document.querySelectorAll("[data-toggle=modal]"); // пер
 modalButtons.forEach((button) => {
   /* клик по переключателю */
   button.addEventListener("click", (event) => {
-    event.preventDefault(); 
-    
-    /* определяем текущее открытое окно */
-    currentModal = document.querySelector(button.dataset.target);
-    
-    if (!currentModal) return; // защита от отсутствия модального окна
-    
-    /* открываем текущее окно */
-    currentModal.classList.toggle("is-open"); 
-    
-    /* назначаем диалоговое окно */
-    modalDialog = currentModal.querySelector(".modal-dialog");
-    
-    if (!modalDialog) return; // защита от отсутствия диалога
-    
-    /* отслеживаем клик по окну и пустым областям */
-    const modalClickHandler = (event) => {
+    event.preventDefault(); /* определяем текущее открытое окно */
+    currentModal = document.querySelector(
+      button.dataset.target,
+    ); /* открываем текущее окно */
+    currentModal.classList.toggle("is-open"); /* назначаем диалоговое окно */
+    modalDialog =
+      currentModal.querySelector(
+        ".modal-dialog",
+      ); /* отслеживаем клик по окну и пустым областям */
+    currentModal.addEventListener("click", (event) => {
       /* если клик в пустую область (не диалог) */
       if (!event.composedPath().includes(modalDialog)) {
         /* закрываем окно */
         currentModal.classList.remove("is-open");
-        currentModal.removeEventListener("click", modalClickHandler);
       }
-    };
-    
-    currentModal.addEventListener("click", modalClickHandler);
+    });
   });
 });
 
 /* ловим событие нажатием кнопки  */
 document.addEventListener("keyup", (event) => {
-  if (event.key == "Escape" && currentModal && currentModal.classList.contains("is-open")) {
+  if (event.key == "Escape" && currentModal.classList.contains("is-open")) {
     /* закрываем окно */
-    currentModal.classList.remove("is-open");
+    currentModal.classList.toggle("is-open");
   }
 });
+
+// document.addEventListener("click", (event) => {
+//   if (
+//     event.target.dataset.toggle == "modal" ||
+//     event.target.parentNode.dataset.toggle == "modal" ||
+//     (!event.composedPath().includes(modalDialog) &&
+//       modal.classList.contains("is-open"))
+//   ) {
+//     event.preventDefault();
+//     modal.classList.toggle("is-open");
+//   }
+// });
 
 const forms = document.querySelectorAll("form");
 forms.forEach((form) => {
   const validation = new JustValidate(form, {
     errorFieldCssClass: "is-invalid",
   });
-  
   validation
+
     .addField("[name=username]", [
       {
         rule: "required",
         errorMessage: "Укажите имя",
       },
-      {
-        rule: "minLength",
-        value: 2,
-        errorMessage: "Имя должно содержать минимум 2 символа",
-      },
+
       {
         rule: "maxLength",
-        value: 100,
-        errorMessage: "Имя не должно превышать 100 символов",
+        value: 50,
+        errorMessage: "Имя не должно превышать 30 символов",
       },
     ])
+
     .addField("[name=userphone]", [
       {
         rule: "required",
         errorMessage: "Укажите телефон",
       },
-      {
-        rule: "function",
-        validator: function(name, value) {
-          const digits = value.replace(/\D/g, '');
-          return digits.length >= 10 && digits.length <= 15;
-        },
-        errorMessage: "Введите корректный номер телефона",
-      },
     ])
     .onSuccess((event) => {
       const thisForm = event.target;
       const formData = new FormData(thisForm);
-      
       const ajaxSend = (formData) => {
         fetch(thisForm.getAttribute("action"), {
           method: thisForm.getAttribute("method"),
           body: formData,
         })
           .then((response) => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            return response.json();
-          })
-          .then((data) => {
-            // Успешная отправка
-            thisForm.reset();
-            
-            // Закрываем текущее модальное окно, если оно открыто
-            if (currentModal && currentModal.classList.contains("is-open")) {
+            if (response.ok) {
+              modal.classList.toggle("is-open");
+              thisForm.reset();
               currentModal.classList.remove("is-open");
-            }
-            
-            // Открываем окно с благодарностью
-            if (alertModal) {
               alertModal.classList.add("is-open");
               currentModal = alertModal;
-              modalDialog = currentModal.querySelector(".modal-dialog");
-              
-              /* отслеживаем клик по окну и пустым областям */
-              const alertClickHandler = (event) => {
+              modalDialog =
+                currentModal.querySelector(
+                  ".modal-dialog",
+                ); /* отслеживаем клик по окну и пустым областям */
+              currentModal.addEventListener("click", (event) => {
+                /* если клик в пустую область (не диалог) */
                 if (!event.composedPath().includes(modalDialog)) {
+                  /* закрываем окно */
                   currentModal.classList.remove("is-open");
-                  currentModal.removeEventListener("click", alertClickHandler);
                 }
-              };
-              
-              currentModal.addEventListener("click", alertClickHandler);
+              });
+            } else {
+              alert("Ошибка отправки формы");
             }
           })
           .catch((error) => {
             console.error("Error:", error);
-            alert("Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже.");
           });
       };
-      
       ajaxSend(formData);
     });
 });
 
-// Маска для телефона
 (() => {
   const SELECTOR = ".phone-mask";
 
@@ -240,7 +217,7 @@ forms.forEach((form) => {
   const normalizeRuDigits = (digits) => {
     if (!digits) return "";
     if (digits[0] === "8") digits = "7" + digits.slice(1);
-    if (digits[0] === "9") digits = "7" + digits;
+    if (digits[0] === "9") digits = "7" + digits; // 9xxxxxxxxx -> 79xxx...
     if (digits[0] !== "7") digits = "7" + digits;
     return digits.slice(0, 11);
   };
@@ -269,6 +246,8 @@ forms.forEach((form) => {
     return out;
   };
 
+  // --- Caret helpers ---
+  // Сколько цифр было введено ДО позиции каретки?
   const digitsCountBeforeCaret = (str, caretPos) => {
     let count = 0;
     for (let i = 0; i < Math.min(caretPos, str.length); i++) {
@@ -277,6 +256,8 @@ forms.forEach((form) => {
     return count;
   };
 
+  // Найти позицию каретки в новом отформатированном значении,
+  // чтобы она стояла после N-й цифры
   const caretPosAfterNDigits = (formatted, nDigits) => {
     if (nDigits <= 0) return 0;
     let count = 0;
@@ -293,7 +274,9 @@ forms.forEach((form) => {
     } catch (_) {}
   };
 
+  // --- Validation UI ---
   const getErrorBox = (input) => {
+    // ищем рядом .phone-error (в том же родителе)
     const parent = input.parentElement;
     if (!parent) return null;
     const box = parent.querySelector(".phone-error");
@@ -338,10 +321,12 @@ forms.forEach((form) => {
     return true;
   };
 
+  // --- Main handlers ---
   const handleFormat = (input) => {
     const oldValue = input.value;
     const oldCaret = input.selectionStart ?? oldValue.length;
 
+    // сколько цифр было до каретки в "старом" значении
     const digitsBefore = digitsCountBeforeCaret(oldValue, oldCaret);
 
     const rawDigits = getDigits(oldValue);
@@ -350,6 +335,7 @@ forms.forEach((form) => {
     const newValue = formatRuPhone(digits);
     input.value = newValue;
 
+    // ставим каретку после такого же количества цифр
     const newCaret = caretPosAfterNDigits(newValue, digitsBefore);
     safeSetCaret(input, newCaret);
   };
@@ -365,8 +351,10 @@ forms.forEach((form) => {
     const input = e.target;
     if (!input.matches(SELECTOR)) return;
 
+    // Если Backspace на самом начале — не даём ломать "+7"
     if (e.key === "Backspace") {
       const pos = input.selectionStart ?? 0;
+      // позиция до "+7" (0..2) или до " (" (0..4) — просто очищаем
       const digits = normalizeRuDigits(getDigits(input.value));
       if (digits.length <= 1) {
         input.value = "";
@@ -374,7 +362,10 @@ forms.forEach((form) => {
         e.preventDefault();
         return;
       }
+      // Если курсор попал на символы "+7 (" — не даём удалять "скобки/пробелы" бесконечно
+      // Удаление цифр всё равно сработает корректно через onInput
       if (pos <= 4) {
+        // оставляем курсор на позиции 4 (после "+7 (")
         setTimeout(() => safeSetCaret(input, 4), 0);
       }
     }
@@ -383,6 +374,7 @@ forms.forEach((form) => {
   const onPaste = (e) => {
     const input = e.target;
     if (!input.matches(SELECTOR)) return;
+    // после вставки форматируем
     setTimeout(() => {
       handleFormat(input);
       validate(input);
@@ -397,6 +389,7 @@ forms.forEach((form) => {
       input.value = "+7 (";
       safeSetCaret(input, input.value.length);
     } else {
+      // при фокусе просто провалидируем, без навязчивости
       validate(input);
     }
   };
@@ -405,6 +398,7 @@ forms.forEach((form) => {
     const input = e.target;
     if (!input.matches(SELECTOR)) return;
 
+    // если оставили "+7 (" — очищаем
     const digits = normalizeRuDigits(getDigits(input.value));
     if (digits.length <= 1) {
       input.value = "";
@@ -412,9 +406,11 @@ forms.forEach((form) => {
       return;
     }
 
+    // финальная валидация при уходе
     validate(input);
   };
 
+  // чтобы можно было валидировать форму перед submit
   const onSubmit = (e) => {
     const form = e.target;
     if (!(form instanceof HTMLFormElement)) return;

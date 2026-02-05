@@ -14,6 +14,27 @@
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <title>Aliance Production</title>
+    <style>
+      /* Улучшение контрастности для Accessibility */
+      .card-text,
+      .footer-menu-link,
+      .modal-text,
+      .notify-text,
+      .cta-form-text {
+        color: #333 !important;
+      }
+      /* Улучшение placeholder */
+      input::placeholder {
+        color: #666 !important;
+        opacity: 1;
+      }
+      /* Видимый фокус */
+      a:focus,
+      button:focus {
+        outline: 2px solid #000;
+        outline-offset: 2px;
+      }
+    </style>
   </head>
 
   <body class="front-page">
@@ -500,32 +521,32 @@
             </ul>
           </div>
           <div class="clients-logo-list">
-            <a href="#" class="clients-logo-item">
-              <img src="img/client.png" alt="client" class="clients-logo" />
+            <a href="#" class="clients-logo-item" aria-label="Клиент компании">
+              <img src="img/client.png" alt="" class="clients-logo" aria-hidden="true" />
             </a>
-            <a href="#" class="clients-logo-item">
-              <img src="img/client.png" alt="client" class="clients-logo" />
+            <a href="#" class="clients-logo-item" aria-label="Клиент компании">
+              <img src="img/client.png" alt="" class="clients-logo" aria-hidden="true" />
             </a>
-            <a href="#" class="clients-logo-item">
-              <img src="img/client.png" alt="client" class="clients-logo" />
+            <a href="#" class="clients-logo-item" aria-label="Клиент компании">
+              <img src="img/client.png" alt="" class="clients-logo" aria-hidden="true" />
             </a>
-            <a href="#" class="clients-logo-item">
-              <img src="img/client.png" alt="client" class="clients-logo" />
+            <a href="#" class="clients-logo-item" aria-label="Клиент компании">
+              <img src="img/client.png" alt="" class="clients-logo" aria-hidden="true" />
             </a>
-            <a href="#" class="clients-logo-item">
-              <img src="img/client.png" alt="client" class="clients-logo" />
+            <a href="#" class="clients-logo-item" aria-label="Клиент компании">
+              <img src="img/client.png" alt="" class="clients-logo" aria-hidden="true" />
             </a>
-            <a href="#" class="clients-logo-item">
-              <img src="img/client.png" alt="client" class="clients-logo" />
+            <a href="#" class="clients-logo-item" aria-label="Клиент компании">
+              <img src="img/client.png" alt="" class="clients-logo" aria-hidden="true" />
             </a>
-            <a href="#" class="clients-logo-item">
-              <img src="img/client.png" alt="client" class="clients-logo" />
+            <a href="#" class="clients-logo-item" aria-label="Клиент компании">
+              <img src="img/client.png" alt="" class="clients-logo" aria-hidden="true" />
             </a>
-            <a href="#" class="clients-logo-item">
-              <img src="img/client.png" alt="client" class="clients-logo" />
+            <a href="#" class="clients-logo-item" aria-label="Клиент компании">
+              <img src="img/client.png" alt="" class="clients-logo" aria-hidden="true" />
             </a>
-            <a href="#" class="clients-logo-item">
-              <img src="img/client.png" alt="client" class="clients-logo" />
+            <a href="#" class="clients-logo-item" aria-label="Клиент компании">
+              <img src="img/client.png" alt="" class="clients-logo" aria-hidden="true" />
             </a>
           </div>
         </div>
@@ -542,7 +563,7 @@
           <div class="swiper-wrapper">
             <!-- Slides -->
             <a href="#" class="swiper-slide blog-card"
-              ><img src="img/tubes.png" alt="" class="blog-card-image" />
+              ><img src="img/tubes.png" alt="Производство химической продукции" class="blog-card-image" />
               <h3 class="blog-card-title">
                 Современная методология разработки одухотворила всех причастных
               </h3>
@@ -553,7 +574,7 @@
               </p>
             </a>
             <a href="#" class="swiper-slide blog-card"
-              ><img src="img/room.png" alt="" class="blog-card-image" />
+              ><img src="img/room.png" alt="Лабораторные исследования" class="blog-card-image" />
               <h3 class="blog-card-title">
                 Сложно сказать, почему жизнь прекрасна
               </h3>
@@ -564,7 +585,7 @@
               </p>
             </a>
             <a href="#" class="swiper-slide blog-card"
-              ><img src="img/tubes.png" alt="" class="blog-card-image" />
+              ><img src="img/tubes.png" alt="Контроль качества продукции" class="blog-card-image" />
               <h3 class="blog-card-title">
                 Современная методология разработки одухотворила всех причастных
               </h3>
@@ -858,5 +879,3 @@
 
   </body>
 </html>
-
-<?php include_once('footer.php'); ?>
