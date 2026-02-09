@@ -12,58 +12,38 @@ const lightModeOff = (event) => {
   navbar.classList.remove("navbar-light");
 };
 
-// Avoid inline styles (mobile Safari can keep stale inline values after toggles)
-const syncNavbarCompact = () => {
-  if (!navbar) return;
-  navbar.classList.toggle("navbar-compact", window.scrollY > 1);
+const changeNavHeight = (height) => {
+  navbar.style.height = height;
 };
 
 const openMenu = (event) => {
   //функция открывания меню
   menu.classList.add("is-open"); //добавляем класс is-open
   mMenuToggle.classList.add("close-menu"); //меняем иконку на крестик
-  document.body.classList.add("menu-open"); //блокируем прокрутку страницы (CSS)
+  document.body.classList.add("menu-open"); //добавляем класс menu-open
+  document.body.style.overflow = "hidden"; //блокируем прокрутку страницы
   lightModeOn();
 };
 
 const closeMenu = (event) => {
   //функция закрывания меню
   menu.classList.remove("is-open"); //удаляем класс is-open
+  document.body.classList.remove("menu-open"); //удаляем класс menu-open
   mMenuToggle.classList.remove("close-menu"); //меняем иконку на гамбургер
-  document.body.classList.remove("menu-open"); //разблокируем прокрутку страницы (CSS)
-
-  // Корректная тема после закрытия меню:
-  // - на главной странице вверху — тёмная шапка
-  // - при скролле и на внутренних страницах — светлая шапка
-  if (!isFront || window.scrollY > 1) {
-    lightModeOn();
-  } else {
-    lightModeOff();
-  }
+  document.body.style.overflow = "auto"; //разблокируем прокрутку страницы
+  lightModeOff();
 };
 
-window.addEventListener(
-  "scroll",
-  () => {
-    syncNavbarCompact();
-    if (isFront) {
-      window.scrollY > 1 ? lightModeOn() : lightModeOff();
-    }
-  },
-  { passive: true },
-);
-
-// Initial sync
-syncNavbarCompact();
+window.addEventListener("scroll", () => {
+  this.scrollY > 1 ? changeNavHeight("4.5rem") : changeNavHeight("5.875rem");
+  if (isFront) {
+    this.scrollY > 1 ? lightModeOn() : lightModeOff();
+  }
+});
 
 mMenuToggle.addEventListener("click", (event) => {
   event.preventDefault();
   menu.classList.contains("is-open") ? closeMenu() : openMenu();
-});
-
-// Закрываем меню при клике по ссылке внутри него
-menu?.addEventListener("click", (event) => {
-  if (event.target.closest("a")) closeMenu();
 });
 
 const swiperSteps = new Swiper(".features-slider", {

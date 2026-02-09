@@ -928,6 +928,106 @@ body {
   opacity: 1;
 }
 
+/* ==================================================
+   Mobile fixes: navbar icons, menu scroll, form CTA,
+   footer overflow (added for mobile stability)
+   ================================================== */
+
+/* Navbar: ensure icons are visible in both states */
+.navbar {
+  --nav-fg: #fff;
+}
+
+.navbar.navbar-light {
+  --nav-fg: #111;
+}
+
+.navbar a,
+.navbar button,
+.navbar .mobile-menu-toggle {
+  color: var(--nav-fg);
+}
+
+.navbar svg,
+.navbar svg * {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+/* Global: prevent horizontal overflow */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Mobile menu: rely on classes only (no inline styles) */
+body.menu-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+}
+
+.mobile-menu.is-open {
+  transform: translateX(0);
+}
+
+/* CTA form: decorative image must not block button clicks */
+.cta-image {
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cta-form {
+  position: relative;
+  z-index: 2;
+}
+
+/* Footer: mobile-safe layout */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-bottom {
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .footer-menu-wrapper:last-child {
+    margin-left: 0;
+  }
+
+  .footer-menu-column-2 {
+    columns: 1;
+    min-width: 0;
+  }
+
+  .footer-menu-link,
+  .footer-info-address,
+  .footer-info-email {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* CTA image on small screens */
+  .cta-image {
+    width: 45%;
+    max-width: 160px;
+    opacity: 0.95;
+  }
+}
+
 .modal-dialog {
   background-color: #fff;
   margin: auto;
@@ -1408,5 +1508,165 @@ body {
 
   .founder-content {
     max-width: 100%;
+  }
+}
+
+/* =====================================================
+   MOBILE FIX PACK (menu, icons, form, footer)
+   ===================================================== */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ===== Mobile menu (off-canvas) ===== */
+body.menu-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+  will-change: transform;
+}
+
+.mobile-menu.is-open {
+  transform: translateX(0);
+}
+
+/* ===== Navbar icons visibility (dark hero vs light scrolled) ===== */
+.navbar {
+  --nav-fg: #fff;
+}
+
+.navbar.navbar-light {
+  --nav-fg: #111;
+}
+
+.navbar a,
+.navbar button,
+.navbar .mobile-menu-toggle {
+  color: var(--nav-fg);
+}
+
+.navbar svg,
+.navbar svg * {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+/* Optional: compact navbar height without inline styles */
+.navbar {
+  height: 5.875rem;
+}
+
+.navbar.navbar-compact {
+  height: 4.5rem;
+}
+
+/* ===== CTA form: image must not block button/taps ===== */
+.cta {
+  position: relative;
+}
+
+.cta-image {
+  pointer-events: none;
+}
+
+.cta-form-wrapper,
+.cta-form {
+  position: relative;
+  z-index: 2;
+}
+
+/* If the image is absolutely positioned, keep it behind the form */
+.cta-image {
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .cta-image {
+    max-width: 140px;
+    height: auto;
+  }
+}
+
+/* ===== Footer: prevent columns from going outside screen ===== */
+.footer {
+  overflow-x: hidden;
+}
+
+.footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer .footer-col {
+  flex: 1 1 160px;
+  min-width: 140px;
+}
+
+.footer a,
+.footer p,
+.footer li {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* =====================================================
+   EXTRA FIXES (CTA layout + menu toggle clickability)
+   ===================================================== */
+
+/* Keep navbar above the off-canvas menu so the toggle is always clickable */
+.navbar {
+  z-index: 1100;
+}
+
+/* Mobile menu must sit under navbar (so navbar toggle works) */
+@media (max-width: 992px) {
+  .mobile-menu {
+    z-index: 1000;
+    /* start below navbar so it doesn't cover the toggle */
+    padding-top: 5.875rem;
+    /* use transform animation instead of display toggling */
+    display: block;
+    transform: translateX(100%);
+  }
+
+  .mobile-menu.is-open {
+    transform: translateX(0);
+  }
+}
+
+/* CTA form: on mobile the image must not overlap the text — keep text to the right */
+@media (max-width: 768px) {
+  .section-cta {
+    /* reserve space for the image on the left */
+    padding-left: 150px;
+  }
+
+  .cta-image {
+    width: 140px;
+    max-width: 140px;
+    left: 0;
+    top: 1rem;
+    bottom: auto;
+  }
+
+  .cta-form-text {
+    min-width: 0;
+  }
+
+  .input-group-wrapper {
+    flex-direction: column;
   }
 }
