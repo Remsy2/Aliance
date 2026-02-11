@@ -70,11 +70,11 @@ body {
 }
 
 .navbar-light .logo-light {
-  display: none;
+  display: none !important;
 }
 
 .navbar-light .logo-dark {
-  display: block;
+  display: block !important;
 }
 
 .navbar-scroll {
@@ -86,7 +86,7 @@ body {
 }
 
 .logo-dark {
-  display: none;
+  display: none !important;
 }
 
 .logo-svg {
