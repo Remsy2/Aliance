@@ -13,6 +13,7 @@
     />
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/mobile-fixes.css" />
     <title>Aliance Production</title>
     <style>
       /* Улучшение контрастности для Accessibility */
@@ -107,8 +108,11 @@
         <div class="mobile-menu-line"></div>
       </a>
       <a href="./" class="header-logo">
-        <svg class="logo-svg logo-dark">
+        <svg class="logo-svg logo-light" aria-hidden="true">
           <use href="img/sprite.svg#logo-light"></use>
+        </svg>
+        <svg class="logo-svg logo-dark" aria-hidden="true">
+          <use href="img/sprite.svg#logo-dark"></use>
         </svg>
       </a>
 

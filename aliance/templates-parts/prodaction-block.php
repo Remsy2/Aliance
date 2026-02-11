@@ -1,8 +1,8 @@
 <section class="section prodaction">
     <div class="container">
-    <?php if (!empty($block_title)){
+    <?php if (isset($production_block_title) && !empty($production_block_title)){
          echo'<div class="separator"></div>';
-        echo'<h2 class="section-title"> '.$block_title .'</h2>';
+        echo'<h2 class="section-title"> '.$production_block_title .'</h2>';
 
       }?>
     
